@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if which fc-cache >/dev/null; then
+  (fc-cache >/dev/null 2>&1 &)
+fi

@@ -1,0 +1,7 @@
+[user]
+	name = Sergey Nazaryev
+	email = sergey@nazaryev.ru
+[color]
+	ui = auto
+[pull]
+	rebase = true

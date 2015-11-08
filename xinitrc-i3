@@ -1,0 +1,13 @@
+#!/bin/sh
+
+scriptdir="$HOME/.xinitrc.d/"
+if [ -d "$scriptdir" ]; then
+  scripts=`/bin/ls -1 "$scriptdir"`
+  for file in $scripts; do
+    if [ -f $scriptdir/$file ]; then
+      $scriptdir/$file
+    fi
+  done
+fi
+
+exec i3

@@ -1,0 +1,20 @@
+# zar's dotfiles
+
+This is a set of configuration files for:
+
+- bash
+- inputrc
+- tmux
+- vim
+- xterm
+- fontconfig
+- git
+- i3
+
+## Installation
+
+```bash
+git clone git://git.nazaryev.ru/git/dotfiles .dotfiles
+cd .dotfiles
+./install.sh
+```
