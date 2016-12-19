@@ -1,4 +1,3 @@
-#!/bin/sh
-set -efu
+#!/bin/bash
 
 xscreensaver -no-splash &
