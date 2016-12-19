@@ -43,11 +43,6 @@ set lazyredraw                                " no lags
 set ttyfast                                   " no lags
 "set nocompatible
 
-" Settings for specific file types
-autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
-autocmd FileType c    set noexpandtab shiftwidth=4 softtabstop=0
-autocmd FileType dts  set noexpandtab shiftwidth=2 softtabstop=0
-
 " Style settings
 syntax on                                     " turn on syntax highlight
 colorscheme elflord
@@ -75,6 +70,10 @@ function! StripTrailingWhitespace()
 endfunction
 
 if has("autocmd")
+  " settings for specific file types
+  autocmd! FileType make setlocal noexpandtab tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80
+  autocmd! FileType c    setlocal noexpandtab tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80
+  autocmd! FileType dts  setlocal noexpandtab tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80
   " jump to the last position when reopening a file
   autocmd! BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
