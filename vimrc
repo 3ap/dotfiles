@@ -48,7 +48,6 @@ syntax on                                     " turn on syntax highlight
 colorscheme elflord
 hi Visual ctermfg=7 ctermbg=0 cterm=none
 hi LineNr ctermfg=DarkGrey ctermbg=none
-match Error /\s\+$/                           " match trailing whitespaces
 
 " Mappings
 let mapleader=","
@@ -85,13 +84,16 @@ if has("autocmd")
 
   " autodetect file type for syntax highlighting
   autocmd! BufEnter,InsertLeave * :filetype detect
+
+  " match trailing whitespaces
+  autocmd! BufEnter,InsertLeave * match Error /\s\+$/
 endif
 
 " Persistent undo
 if has('persistent_undo')
-  call system('mkdir -p ~/.vim/undo')
-  set undodir=~/.vim/undo
-  set undofile
+    call system('mkdir -p ~/.vim/undo')
+    set undodir=~/.vim/undo
+    set undofile
 endif
 
 " Omni-complition
