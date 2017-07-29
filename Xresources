@@ -1,5 +1,5 @@
 XTerm*VT100.geometry    : 100x20
-XTerm*faceName          : Monaco:style=Regular:size=16
+XTerm*faceName          : SF Mono:style=Medium:size=20
 XTerm*metaSendsEscape   : true
 XTerm*saveLines         : 16384
 xterm*borderWidth       : 0
