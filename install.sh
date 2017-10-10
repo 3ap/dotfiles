@@ -181,6 +181,10 @@ install_dotfile "bash"                                            \
                 "$HOME/.bashrc.d/02-bash_env"
 
 install_dotfile "bash"                                            \
+                "$dotfilesdir/bash_ps1"                           \
+                "$HOME/.bashrc.d/02-bash_ps1"
+
+install_dotfile "bash"                                            \
                 "$dotfilesdir/bash_aliases"                       \
                 "$HOME/.bashrc.d/02-bash_aliases"
 
