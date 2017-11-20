@@ -15,13 +15,13 @@ for_window [instance="dropdown"] scratchpad show;
 bindsym Ctrl+grave [instance="dropdown"] scratchpad show
 
 # Main hotkeys
-bindsym $mod+Return          exec "xrdb $HOME/.Xresources && xterm"
+bindsym $mod+Return          exec xterm
 bindsym $mod+r               exec dmenu_run
 bindsym $mod+c               kill
 bindsym Mod1+Shift+r         reload
 bindsym $mod+Shift+r         restart
 bindsym $mod+Ctrl+Shift+q    exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+l               exec "slock"
+bindsym $mod+l               exec --no-startup-id i3lock
 
 # Workspaces
 bindsym $mod+1               workspace 1
