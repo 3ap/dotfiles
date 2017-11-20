@@ -1,0 +1,22 @@
+#!/bin/bash
+
+open() {
+  file="$1"
+
+  IFS='/' read -r major minor < <(file -ib "$file" 2>/dev/null | cut -d ';' -f 1)
+
+  case "$major/$minor" in
+    text/html)
+      firefox "$file";;
+    application/pdf)
+      zathura "$file";;
+    image/*)
+      feh "$file";;
+    text/*)
+      xterm -e vim "$file";;
+    video/*)
+      mplayer "$file";;
+    *)
+      /usr/bin/xdg-open "$file";;
+  esac
+}

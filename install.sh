@@ -213,6 +213,14 @@ install_dotfile "bash dircolors"                                  \
                 "$HOME/.bashrc.d/02-bash_dircolors"
 
 install_dotfile "bash"                                            \
+                "$dotfilesdir/bash_open"                          \
+                "$HOME/.bashrc.d/04-bash_open"
+
+install_dotfile "bash"                                            \
+                "$dotfilesdir/bash_path"                          \
+                "$HOME/.bashrc.d/04-bash_path"
+
+install_dotfile "bash"                                            \
                 "$dotfilesdir/inputrc"                            \
                 "$HOME/.inputrc"
 
