@@ -31,6 +31,7 @@ set keymap vi-insert
 # searching through commands (i.e. more intelligent Up/Down behavior)
 "\e[A": history-search-backward
 "\e[B": history-search-forward
+"\C-l": clear-screen
 
 # Duplicate last inserted argument in prompt
 "\C-e": "\C-w\C-y\C-y\C-h"
