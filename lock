@@ -1,0 +1,65 @@
+#!/bin/sh
+set -efuo pipefail
+
+letterEnteredColor=d23c3dff
+letterRemovedColor=d23c3dff
+passwordCorrect=00000000
+passwordIncorrect=d23c3dff
+background=00000000
+foreground=ffffffff
+
+screenshot=/tmp/screenshot.jpg
+thumb=/tmp/screenshot-thumb.jpg
+image=/tmp/screenshot-thumb.png
+i3lock_color=no
+opts="-e -n"
+
+trap cleanup EXIT
+cleanup() {
+  rm -f "${image}" "${screenshot}" "${thumb}"
+}
+
+if man i3lock | /bin/grep -q i3lock-color; then
+  i3lock_color=yes
+fi
+
+if command -v scrot >/dev/null 2>&1 && \
+   command -v convert >/dev/null 2>&1; then
+
+  if [ "${i3lock_color}" = 'yes' ]; then
+    # i3lock-color supports '*.jpg' for background
+    image=/tmp/screenshot-thumb.jpg
+  fi
+
+  rectangles=$(xrandr --query \
+                 | grep ' connected' \
+                 | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*' \
+                 | sed 's/[+x]/ /g' \
+                 | awk '{ printf "rectangle %d %d %d %d ", $3+25, $2-30, $3+25+300, $2-30-80 }')
+
+  scrot -t 25% "${screenshot}"
+  convert "${thumb}" -blur 5x2 \
+                     -resize 400% \
+                     -draw "fill rgba(0, 0, 0, 0.4) ${rectangles}" \
+                     "${image}"
+  rm -f "${screenshot}"
+
+  opts="${opts} -i ${image}"
+fi
+
+if [ "${i3lock_color}" = 'yes' ]; then
+  i3lock ${opts} \
+    --timepos="x+110:h-70" \
+    --datepos="x+130:h-45" \
+    --clock --datestr "Type password to unlock..." \
+    --insidecolor=$background --ringcolor=$foreground --line-uses-inside \
+    --keyhlcolor=$letterEnteredColor --bshlcolor=$letterRemovedColor --separatorcolor=$background \
+    --insidevercolor=$passwordCorrect --insidewrongcolor=$passwordIncorrect \
+    --ringvercolor=$foreground --ringwrongcolor=$foreground --indpos="x+280:h-70" \
+    --radius=20 --ring-width=4 --veriftext="" --wrongtext="" \
+    --verifcolor="$foreground" --timecolor="$foreground" --datecolor="$foreground" \
+    --noinputtext="" --time-font="SF Mono:style=Medium:size=20" \
+    --force-clock
+else
+  i3lock ${opts} -u
+fi

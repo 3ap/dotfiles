@@ -1,17 +1,6 @@
 set $mod Mod4
 floating_modifier $mod
 
-# Dropdown terminal
-exec --no-startup-id xterm -name dropdown
-for_window [instance="dropdown"] floating enable;
-for_window [instance="dropdown"] move scratchpad;
-for_window [instance="dropdown"] scratchpad show;
-for_window [instance="dropdown"] move position 0px 0px;
-for_window [instance="dropdown"] resize shrink height 20000px;
-for_window [instance="dropdown"] resize grow width 20000px;
-for_window [instance="dropdown"] resize grow height 300px;
-for_window [instance="dropdown"] scratchpad show;
-
 bindsym Ctrl+grave [instance="dropdown"] scratchpad show
 
 # Main hotkeys
@@ -21,7 +10,7 @@ bindsym $mod+c               kill
 bindsym Mod1+Shift+r         reload
 bindsym $mod+Shift+r         restart
 bindsym $mod+Ctrl+Shift+q    exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+l               exec --no-startup-id i3lock
+bindsym $mod+l               exec lock
 
 # Workspaces
 bindsym $mod+1               workspace 1
