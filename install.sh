@@ -253,9 +253,21 @@ install_dotfile "setxkbmap"                                       \
                 "$dotfilesdir/xinitrc-xkbmap"                     \
                 "$HOME/.xinitrc.d/00-xkbmap"
 
-install_dotfile "xscreensaver"                                    \
-                "$dotfilesdir/xinitrc-xscreensaver"               \
-                "$HOME/.xinitrc.d/00-xscreensaver"
+install_dotfile "xautolock i3lock"                                \
+                "$dotfilesdir/xinitrc-xautolock"                  \
+                "$HOME/.xinitrc.d/00-xautolock"
+
+install_dotfile "feh"                                             \
+                "$dotfilesdir/xinitrc-wallpaper"                  \
+                "$HOME/.xinitrc.d/01-wallpaper"
+
+install_dotfile "i3lock"                                          \
+                "$dotfilesdir/lock"                               \
+                "$HOME/.local/bin/lock"
+
+install_dotfile "alacritty"                                       \
+                "$dotfilesdir/alacritty.yml"                      \
+                "$HOME/.config/alacritty/alacritty.yml"
 
 install_dotfile "i3"                                              \
                 "$dotfilesdir/xinitrc-i3"                         \

@@ -1,0 +1,2 @@
+#!/bin/sh
+xautolock -locker i3lock &
