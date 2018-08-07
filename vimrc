@@ -1,5 +1,5 @@
 " .vimrc configuration by zar <sergey@nazaryev.ru>
-
+set nocompatible
 set langmap=ё`йqцwуeкrеtнyгuшiщoзpх[ъ]фaыsвdаfпgрhоjлkдlж\\;э'яzчxсcмvиbтnьmб\\,ю.Ё~ЙQЦWУEКRЕTНYГUШIЩOЗPХ{Ъ}ФAЫSВDАFПGРHОJЛKДLЖ:Э\\"ЯZЧXСCМVИBТNЬMЮ>Б<
 
 nohl                                          " no highlight last search query in new files
@@ -16,9 +16,6 @@ set wildmode=list:longest,full                " sh-like autocompletion file name
 set wildmenu                                  " enhanced cmd line completion
 set ruler                                     " show the cursor position all the time
 set nowrap                                    " don't wrap lines on screen
-set expandtab                                 " convert all TAB to N spaces
-set shiftwidth=2                              " where N is 2
-set tabstop=2                                 " width of tab in number of spaces
 set shortmess=atI                             " don't show startup screen
 set scrolloff=3                               " scroll before N lines to bottom
 set number                                    " show line numbers
@@ -41,7 +38,6 @@ set hidden                                    " allow buffer switching without s
 set virtualedit=onemore                       " allow for cursor beyond last character
 set lazyredraw                                " no lags
 set ttyfast                                   " no lags
-"set nocompatible
 
 " Style settings
 syntax on                                     " turn on syntax highlight
@@ -90,7 +86,7 @@ if has("autocmd")
   autocmd! bufwritepost .vimrc source $MYVIMRC
 
   " autostrip trailing whitespaces
-  autocmd! FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql,vim,markdown autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+  "autocmd! FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yaml,yml,perl,sql,vim,markdown autocmd BufWritePre <buffer> call StripTrailingWhitespace()
 
   " autodetect file type for syntax highlighting
   autocmd! BufEnter,InsertLeave * :filetype detect
