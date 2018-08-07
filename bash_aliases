@@ -6,6 +6,8 @@ alias grep="ag"
 alias search="find . -name"
 alias o='open'
 
+which neomutt >/dev/null && alias mutt='neomutt'
+
 cd() {
   builtin cd "$@" && ls
 }
