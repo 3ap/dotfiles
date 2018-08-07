@@ -1,2 +1,3 @@
 #!/bin/sh
-setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:scroll,compose:ralt"
+
+setxkbmap "birman-us,birman-ru" "birman,birman" "grp:caps_toggle,grp_led:scroll" -print | xkbcomp -I${HOME}/.config/xkb - $DISPLAY

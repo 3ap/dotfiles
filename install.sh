@@ -277,4 +277,12 @@ install_dotfile "i3"                                              \
                 "$dotfilesdir/i3-config"                          \
                 "$HOME/.i3/config"
 
+install_dotfile "setxkbmap"                                       \
+                "$dotfilesdir/xkb-birman-ru"                      \
+                "$HOME/.config/xkb/symbols/birman-ru"
+
+install_dotfile "setxkbmap"                                       \
+                "$dotfilesdir/xkb-birman-us"                      \
+                "$HOME/.config/xkb/symbols/birman-us"
+
 info "Installing successfully done.\n"
