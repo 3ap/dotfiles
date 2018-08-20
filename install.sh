@@ -193,6 +193,10 @@ install_dotfile "bash"                                            \
                 "$HOME/.bashrc.d/01-bash_completion"
 
 install_dotfile "bash"                                            \
+                "/usr/share/bash-completion/bash_completion"      \
+                "$HOME/.bashrc.d/01-bash_completion"
+
+install_dotfile "bash"                                            \
                 "/etc/profile"                                    \
                 "$HOME/.bashrc.d/01-profile"
 
