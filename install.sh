@@ -177,6 +177,10 @@ install_dotfile "bash"                                            \
                 "$HOME/.bash_profile"
 
 install_dotfile "bash"                                            \
+                "$dotfilesdir/bash_history"                       \
+                "$HOME/.bashrc.d/01-bash_history"
+
+install_dotfile "bash"                                            \
                 "$dotfilesdir/bash_env"                           \
                 "$HOME/.bashrc.d/02-bash_env"
 
