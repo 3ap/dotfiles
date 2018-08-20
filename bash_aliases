@@ -6,7 +6,8 @@ alias grep="ag"
 alias search="find . -name"
 alias o='open'
 
-which neomutt >/dev/null && alias mutt='neomutt'
+command -v neomutt >/dev/null 2>&1 && alias mutt='neomutt'
+command -v nvim >/dev/null 2>&1 && alias vim='nvim'
 
 cd() {
   builtin cd "$@" && ls
