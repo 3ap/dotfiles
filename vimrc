@@ -30,7 +30,6 @@ set smartcase                                 " uppercase causes case-sensitive 
 set pastetoggle=<F3>                          " paste mode toggle by button
 set laststatus=2                              " always show status line
 set timeoutlen=1000 ttimeoutlen=0             " no timeout after exit from visual mode
-set esckeys                                   " allow cursor keys in insert mode
 set nojoinspaces                              " only insert single space after a '.', '?' and '!' with a join command
 set smarttab                                  " at start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces
 set novisualbell                              " no visual and sound bell
