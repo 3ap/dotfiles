@@ -261,6 +261,14 @@ install_dotfile "setxkbmap"                                       \
                 "$dotfilesdir/xinitrc-xkbmap"                     \
                 "$HOME/.xinitrc.d/00-xkbmap"
 
+install_dotfile "dunst"                                           \
+                "$dotfilesdir/dunstrc"                            \
+                "$HOME/.config/dunstrc"
+
+install_dotfile "dunst"                                           \
+                "$dotfilesdir/xinitrc-dunst"                      \
+                "$HOME/.xinitrc.d/03-dunst"
+
 install_dotfile "xautolock i3lock"                                \
                 "$dotfilesdir/xinitrc-xautolock"                  \
                 "$HOME/.xinitrc.d/00-xautolock"
