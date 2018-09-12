@@ -8,6 +8,7 @@ alias o='open'
 
 command -v neomutt >/dev/null 2>&1 && alias mutt='neomutt'
 command -v nvim >/dev/null 2>&1 && alias vim='nvim'
+command -v vim >/dev/null 2>&1 && alias vi='vim'
 
 cd() {
   builtin cd "$@" && ls
