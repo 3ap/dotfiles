@@ -168,6 +168,10 @@ install_dotfile "vim"                                             \
                 "$dotfilesdir/vimrc"                              \
                 "$HOME/.vimrc"
 
+install_dotfile "nvim"                                            \
+                "$dotfilesdir/vimrc"                              \
+                "$HOME/.config/nvim/init.vim"
+
 install_dotfile "bash"                                            \
                 "$dotfilesdir/bashrc"                             \
                 "$HOME/.bashrc"
