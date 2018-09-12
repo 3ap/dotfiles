@@ -269,6 +269,10 @@ install_dotfile "dunst"                                           \
                 "$dotfilesdir/xinitrc-dunst"                      \
                 "$HOME/.xinitrc.d/03-dunst"
 
+install_dotfile "dunst notify-send inotifywait mutt"              \
+                "$dotfilesdir/xinitrc-mailnotify"                 \
+                "$HOME/.xinitrc.d/00-mailnotify"
+
 install_dotfile "xautolock i3lock"                                \
                 "$dotfilesdir/xinitrc-xautolock"                  \
                 "$HOME/.xinitrc.d/00-xautolock"

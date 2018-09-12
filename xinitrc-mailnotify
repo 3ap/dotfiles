@@ -1,0 +1,4 @@
+#!/bin/sh
+(while inotifywait ~/.mail/*/INBOX/new -e moved_to; do
+  notify-send "New mail"
+done) &
