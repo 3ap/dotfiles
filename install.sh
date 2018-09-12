@@ -305,4 +305,8 @@ install_dotfile "setxkbmap"                                       \
                 "$dotfilesdir/xkb-birman-us"                      \
                 "$HOME/.config/xkb/symbols/birman-us"
 
+install_dotfile "htop"                                            \
+                "$dotfilesdir/htoprc"                             \
+                "$HOME/.config/htop/htoprc"
+
 info "Installing successfully done.\n"
