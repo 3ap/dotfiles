@@ -1,26 +1,30 @@
-XTerm*VT100.geometry    : 100x20
-XTerm*faceName          : SF Mono:style=Medium:size=20
-XTerm*metaSendsEscape   : true
-XTerm*saveLines         : 16384
-xterm*borderWidth       : 0
-XTerm*color0            : #222222
-XTerm*color1            : #9E5641
-XTerm*color2            : #6C7E55
-XTerm*color3            : #CAAF2B
-XTerm*color4            : #7C9AA6
-XTerm*color5            : #956D9D
-XTerm*color6            : #4c8ea1
-XTerm*color7            : #808080
-XTerm*color8            : #454545
-XTerm*color9            : #CC896D
-XTerm*color10           : #7DB37D
-XTerm*color11           : #BFB556
-XTerm*color12           : #8FADBF
-XTerm*color13           : #C18FCB
-XTerm*color14           : #6bc1d0
-XTerm*color15           : #cdcdcd
-XTerm*foreground        : #cbcbc9
-XTerm*background        : #101010
-XTerm*cursorColor       : #8faf9f
-
+*faceName             : SF Mono:style=Medium:size=25
+*metaSendsEscape      : true
+*saveLines            : 16384
+*borderWidth          : 0
+*color0               : #222222
+*color1               : #9E5641
+*color2               : #6C7E55
+*color3               : #CAAF2B
+*color4               : #7C9AA6
+*color5               : #956D9D
+*color6               : #4c8ea1
+*color7               : #808080
+*color8               : #454545
+*color9               : #CC896D
+*color10              : #7DB37D
+*color11              : #BFB556
+*color12              : #8FADBF
+*color13              : #C18FCB
+*color14              : #6bc1d0
+*color15              : #cdcdcd
+*foreground           : #cbcbc9
+*background           : #101010
+*cursorColor          : #8faf9f
+URxvt.font            : xft:SF Mono:style=Medium:size=20
+URxvt.scrollBar       : false
+xterm*decTerminalID   : vt340
+URxvt*depth: 32
+URxvt*background: rgba:0000/0000/0200/ff00
+Xft.dpi: 96
 ! vim:ft=xdefaults
