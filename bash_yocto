@@ -1,0 +1,4 @@
+layers() {
+  find . -maxdepth 1 -mindepth 1 -type d -print0 | \
+    xargs -0 -I % /bin/sh -c 'cd %; git remote -v | head -1 | awk "{ print $2 }"; git rev-parse HEAD'
+}
