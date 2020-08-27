@@ -1,0 +1,23 @@
+#!/bin/sh
+set -efuo pipefail
+
+screenshot=/tmp/screenshot.jpg
+background=/tmp/screenshot-thumb.jpg
+opts=""
+
+trap cleanup EXIT
+cleanup() {
+  rm -f "${background}" "${screenshot}"
+}
+
+if command -v grim >/dev/null 2>&1 && \
+   command -v convert >/dev/null 2>&1; then
+
+  grim -t jpeg "${screenshot}"
+  convert "${screenshot}" -blur 0x8 "${background}"
+  rm -f "${screenshot}"
+
+  opts="${opts} -i ${background}"
+fi
+
+swaylock ${opts}

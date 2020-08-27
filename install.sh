@@ -208,6 +208,22 @@ install_dotfile "bash"                                            \
                 "/etc/profile"                                    \
                 "$HOME/.bashrc.d/01-profile"
 
+install_dotfile "bash sway"                                       \
+                "$dotfilesdir/bash_wayland"                       \
+                "$HOME/.bashrc.d/99-wayland"
+
+install_dotfile "sway mako"                                       \
+                "$dotfilesdir/sway-mako"                          \
+                "$HOME/.swayrc.d/03-mako"
+
+install_dotfile "sway setxkbmap"                                  \
+                "$dotfilesdir/xinitrc-xkbmap"                     \
+                "$HOME/.swayrc.d/00-xkbmap"
+
+install_dotfile "sway mako notify-send inotifywait neomutt"       \
+                "$dotfilesdir/xinitrc-mailnotify"                 \
+                "$HOME/.swayrc.d/00-mailnotify"
+
 install_dotfile "bash"                                            \
                 "/usr/share/doc/pkgfile/command-not-found.bash"   \
                 "$HOME/.bashrc.d/02-command-not-found"
@@ -289,6 +305,10 @@ install_dotfile "i3lock"                                          \
                 "$dotfilesdir/lock"                               \
                 "$HOME/.local/bin/lock"
 
+install_dotfile "swaylock"                                        \
+                "$dotfilesdir/sway-lock"                          \
+                "$HOME/.local/bin/lock"
+
 install_dotfile "alacritty"                                       \
                 "$dotfilesdir/alacritty.yml"                      \
                 "$HOME/.config/alacritty/alacritty.yml"
@@ -300,6 +320,10 @@ install_dotfile "i3"                                              \
 install_dotfile "i3"                                              \
                 "$dotfilesdir/i3-config"                          \
                 "$HOME/.i3/config"
+
+install_dotfile "sway"                                            \
+                "$dotfilesdir/sway-config"                        \
+                "$HOME/.config/sway/config"
 
 install_dotfile "setxkbmap"                                       \
                 "$dotfilesdir/xkb-birman-ru"                      \
