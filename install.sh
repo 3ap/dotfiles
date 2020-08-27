@@ -228,6 +228,14 @@ install_dotfile "sway mako notify-send inotifywait neomutt"       \
                 "$dotfilesdir/xinitrc-mailnotify"                 \
                 "$HOME/.swayrc.d/00-mailnotify"
 
+install_dotfile "waybar"                                          \
+                "$dotfilesdir/waybar-config"                      \
+                "$HOME/.config/waybar/config"
+
+install_dotfile "waybar"                                          \
+                "$dotfilesdir/waybar-style"                       \
+                "$HOME/.config/waybar/style.css"
+
 install_dotfile "i3status"                                        \
                 "$dotfilesdir/i3status-config"                    \
                 "$HOME/.config/i3status/config"
