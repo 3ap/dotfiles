@@ -11,7 +11,7 @@ set smartindent                               " enable smart indent
 set history=7000                              " keep 7000 lines of command line history
 set colorcolumn=70                            " set colored column on 70 column
 set textwidth=69                              " autosplit after 69 column
-set mouse=a                                   " using mouse in terminal
+set mouse=n                                   " using mouse in terminal
 set wildmode=list:longest,full                " sh-like autocompletion file names
 set wildmenu                                  " enhanced cmd line completion
 set ruler                                     " show the cursor position all the time
@@ -29,9 +29,12 @@ set ignorecase                                " case-insensitive search
 set smartcase                                 " uppercase causes case-sensitive search
 set pastetoggle=<F3>                          " paste mode toggle by button
 set laststatus=2                              " always show status line
-set timeoutlen=1000 ttimeoutlen=0             " no timeout after exit from visual mode
+"set timeoutlen=1000 ttimeoutlen=0             " no timeout after exit from visual mode
 set nojoinspaces                              " only insert single space after a '.', '?' and '!' with a join command
 set smarttab                                  " at start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces
+set expandtab                                 " convert all TAB to N spaces
+set shiftwidth=4                              " where N is 4
+set tabstop=4                                 " width of tab in number of space
 set novisualbell                              " no visual and sound bell
 set hidden                                    " allow buffer switching without saving
 set virtualedit=onemore                       " allow for cursor beyond last character
@@ -52,6 +55,7 @@ command! Cwd lcd %:p:h
 command! Sudo w !sudo tee % >/dev/null
 vnoremap < <gv
 vnoremap > >gv
+nnoremap s "_d
 noremap <leader>ss :call StripTrailingWhitespace()<CR>
 
 " Use Tab for autocomplete, if not at beginning of line
@@ -76,7 +80,7 @@ endfunction
 if has("autocmd")
   " settings for specific file types
   autocmd! FileType make setlocal noexpandtab tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80
-  autocmd! FileType c    setlocal noexpandtab tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80
+  "autocmd! FileType c    setlocal noexpandtab tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80
   autocmd! FileType dts  setlocal noexpandtab tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80
   " jump to the last position when reopening a file
   autocmd! BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -101,6 +105,35 @@ if has('persistent_undo')
     set undofile
 endif
 
+if has('cscope')
+"  set cscopetag cscopeverbose
+
+"  if has('quickfix')
+"    set cscopequickfix=s-,c-,d-,i-,t-,e-
+"  endif
+
+  cnoreabbrev csa cs add
+  cnoreabbrev csf cs find
+  cnoreabbrev csk cs kill
+  cnoreabbrev csr cs reset
+  cnoreabbrev css cs show
+  cnoreabbrev csh cs help
+endif
+
 " Omni-complition
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+set guicursor=
+
+"call plug#begin('~/.local/share/nvim/plugged')
+"Plug 'rking/ag.vim'
+"call plug#end()
+"
+
+nmap <LeftMouse> <nop>
+imap <LeftMouse> <nop>
+vmap <LeftMouse> <nop>
+nmap <2-LeftMouse> <nop>
+imap <2-LeftMouse> <nop>
+vmap <2-LeftMouse> <nop>
+set mouse=
