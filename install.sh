@@ -208,6 +208,10 @@ install_dotfile "bash"                                            \
                 "/etc/profile"                                    \
                 "$HOME/.bashrc.d/01-profile"
 
+install_dotfile "bash"                                            \
+                "$dotfilesdir/bash_beeper"                        \
+                "$HOME/.bashrc.d/02-bash_beeper"
+
 install_dotfile "bash sway"                                       \
                 "$dotfilesdir/bash_wayland"                       \
                 "$HOME/.bashrc.d/99-wayland"
