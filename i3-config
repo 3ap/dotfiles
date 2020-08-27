@@ -4,7 +4,7 @@ floating_modifier $mod
 bindsym Ctrl+grave [instance="dropdown"] scratchpad show
 
 # Main hotkeys
-bindsym $mod+Return          exec xterm
+bindsym $mod+Return          exec urxvtc
 bindsym $mod+r               exec dmenu_run
 bindsym $mod+c               kill
 bindsym Mod1+Shift+r         reload
