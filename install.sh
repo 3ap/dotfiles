@@ -76,7 +76,7 @@ e.g. install_dotfiles \"bash xterm\" \"/etc/profile\" \"\$HOME/.bashrc\"\n"
   local ret=0
 
   for app in $apps; do
-    type "$app" >/dev/null 2>&1 || ret=$?
+    command -v "$app" >/dev/null 2>&1 || ret=$?
     if [ $ret -ne 0 ]; then
       info '>> %s is not found on this server. Skipping %s...\n' \
                                                     "$app" "$srcpath"
