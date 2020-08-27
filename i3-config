@@ -11,6 +11,11 @@ bindsym Mod1+Shift+r         reload
 bindsym $mod+Shift+r         restart
 bindsym $mod+Ctrl+Shift+q    exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+l               exec lock
+bindsym --release Print exec "scrot -m '/home/zar/%s_%H%M_%d.%m.%Y_$wx$h.png'"
+bindsym --release Shift+Print exec "scrot -s '/home/zar/%s_%H%M_%d%m%Y_$wx$h.png'"
+bindsym XF86AudioRaiseVolume exec "amixer sset Master '5%+'"
+bindsym XF86AudioLowerVolume exec "amixer sset Master '5%-'"
+bindsym XF86AudioMute exec "amixer set Master toggle"
 
 # Workspaces
 bindsym $mod+1               workspace 1
