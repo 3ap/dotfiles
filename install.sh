@@ -260,6 +260,10 @@ install_dotfile "xrdb"                                            \
                 "$dotfilesdir/Xresources"                         \
                 "$HOME/.Xresources"
 
+install_dotfile "xrdb"                                            \
+                "$dotfilesdir/Xresources"                         \
+                "$HOME/.Xdefaults"
+
 install_dotfile "git"                                             \
                 "$dotfilesdir/gitconfig"                          \
                 "$HOME/.gitconfig"
