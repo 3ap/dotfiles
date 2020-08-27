@@ -224,6 +224,10 @@ install_dotfile "sway mako notify-send inotifywait neomutt"       \
                 "$dotfilesdir/xinitrc-mailnotify"                 \
                 "$HOME/.swayrc.d/00-mailnotify"
 
+install_dotfile "i3status"                                        \
+                "$dotfilesdir/i3status-config"                    \
+                "$HOME/.config/i3status/config"
+
 install_dotfile "bash"                                            \
                 "/usr/share/doc/pkgfile/command-not-found.bash"   \
                 "$HOME/.bashrc.d/02-command-not-found"
