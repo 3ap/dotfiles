@@ -1,57 +1,66 @@
-partial alphanumeric_keys
-xkb_symbols "birman" {
+partial default alphanumeric_keys
+xkb_symbols "typo-birman-ru" {
+    name[Group1]= "Russian (Typographic by Ilya Birman)";
 
-    include "ru(winkeys)"
+    // 1st keyboard row
+    key <TLDE> { [       Cyrillic_io,       Cyrillic_IO,              NoSymbol,             dead_grave ] }; // "~"
+    key <AE01> { [                 1,            exclam,           onesuperior,             exclamdown ] }; // "1""
+    key <AE02> { [                 2,          quotedbl,           twosuperior,                onehalf ] }; // "2"
+    key <AE03> { [                 3,        numerosign,         threesuperior,               onethird ] }; // "3"
+    key <AE04> { [                 4,         semicolon,                dollar,             onequarter ] }; // "4"
+    key <AE05> { [                 5,           percent,                 U2030,               NoSymbol ] }; // "5" // U+2030 PER MILLE SIGN (‰)
+    key <AE06> { [                 6,             colon,               uparrow,        dead_circumflex ] }; // "6"
+    key <AE07> { [                 7,          question,             ampersand,           questiondown ] }; // "7" // +&
+    key <AE08> { [                 8,          asterisk,              infinity,              oneeighth ] }; // "8" // +S⅛
+    key <AE09> { [                 9,         parenleft,             leftarrow,               NoSymbol ] }; // "9"
+    key <AE10> { [                 0,        parenright,            rightarrow,               NoSymbol ] }; // "0"
+    key <AE11> { [             minus,        underscore,                emdash,                 endash ] }; // "-"
+    key <AE12> { [             equal,              plus,              notequal,              plusminus ] }; // "="
 
-    key <AE01> { [           1,      exclam, 0x010000b9, 0x010000a1 ] }; // ¹ ¡
-    key <AE02> { [           2,    quotedbl, 0x010000b2, 0x010000bd ] }; // ² ½
-    key <AE03> { [           3,  numerosign, 0x010000b3, 0x01002153 ] }; // ³ ⅓
-    key <AE04> { [           4,   semicolon,     dollar, 0x010000bc ] }; // $ ¼
-    key <AE05> { [           5,     percent, 0x01002030             ] }; // ‰
-    key <AE06> { [           6,       colon, 0x01002191, dead_circumflex ] }; // ↑ ^
-    key <AE07> { [           7,    question,       none, 0x010000bf ] }; //   ¿
-    key <AE08> { [           8,    asterisk, 0x0100221e             ] }; // ∞
-    key <AE09> { [           9,   parenleft, 0x01002190,       less ] }; // ← <
-    key <AE10> { [           0,  parenright, 0x01002192,    greater ] }; // → >
-    key <AE11> { [       minus,  underscore, 0x01002014, 0x01002013 ] }; // — –
-    key <AE12> { [       equal,        plus, 0x01002260, notequal ] }; // ≠ ±
+    // 2nd keyboard row
+    key <AD01> { [   Cyrillic_shorti,   Cyrillic_SHORTI,              NoSymbol,             dead_breve  ] }; // "q"
+    key <AD02> { [      Cyrillic_tse,      Cyrillic_TSE,              NoSymbol,               NoSymbol  ] }; // "w"
+    key <AD03> { [        Cyrillic_u,        Cyrillic_U,              EuroSign,               NoSymbol  ] }; // "e"
+    key <AD04> { [       Cyrillic_ka,       Cyrillic_KA,            registered,         dead_abovering  ] }; // "r"
+    key <AD05> { [       Cyrillic_ie,       Cyrillic_IE,             trademark,               NoSymbol  ] }; // "t"
+    key <AD06> { [       Cyrillic_en,       Cyrillic_EN,                 U0463,                  U0462  ] }; // "y" // U+0463 CYRILLIC SMALL LETTER YAT // U+0462 CYRILLIC CAPITAL LETTER YAT
+    key <AD07> { [      Cyrillic_ghe,      Cyrillic_GHE,                 U0475,                  U0474  ] }; // "u" // U+0475 CYRILLIC SMALL LETTER IZHITSA // U+0474 CYRILLIC CAPITAL LETTER IZHITSA
+    key <AD08> { [      Cyrillic_sha,      Cyrillic_SHA,           Ukrainian_i,            Ukrainian_I  ] }; // "i"
+    key <AD09> { [    Cyrillic_shcha,    Cyrillic_SHCHA,                 U0473,                  U0472  ] }; // "o" // U+0473 CYRILLIC SMALL LETTER FITA // U+0472 CYRILLIC CAPITAL LETTER FITA
+    key <AD10> { [       Cyrillic_ze,       Cyrillic_ZE,                 acute,            doubleacute  ] }; // "p"
+    key <AD11> { [       Cyrillic_ha,       Cyrillic_HA,           bracketleft,              braceleft  ] }; // "["
+    key <AD12> { [ Cyrillic_hardsign, Cyrillic_HARDSIGN,          bracketright,             braceright  ] }; // "]"
 
-    key <TLDE> { [       Cyrillic_io,       Cyrillic_IO,      acute, dead_grave  ] }; // ´ `
-    key <AD01> { [   Cyrillic_shorti,   Cyrillic_SHORTI,       none, dead_breve  ] }; //   ˘
-    key <AD03> { [        Cyrillic_u,        Cyrillic_U, 0x010020ac              ] }; // €
-    key <AD04> { [       Cyrillic_ka,       Cyrillic_KA, 0x010000ae, dead_abovering ] }; // ® °
-    key <AD05> { [       Cyrillic_ie,       Cyrillic_IE, 0x01002122              ] }; // ™
-    key <AD06> { [       Cyrillic_en,       Cyrillic_EN, 0x01000463, 0x01000462  ] }; // ѣ Ѣ
-    key <AD07> { [      Cyrillic_ghe,      Cyrillic_GHE, 0x01000475, 0x01000474  ] }; // ѵ Ѵ
-    key <AD08> { [      Cyrillic_sha,      Cyrillic_SHA, 0x01000456, 0x01000406  ] }; // і І
-    key <AD09> { [    Cyrillic_shcha,    Cyrillic_SHCHA, 0x01000473, 0x01000472  ] }; // ѳ Ѳ
-    key <AD10> { [       Cyrillic_ze,       Cyrillic_ZE, 0x010000b4, 0x010002dd  ] }; // ´ ˝
-    key <AD11> { [       Cyrillic_ha,       Cyrillic_HA, bracketleft, braceleft  ] }; // [ {
-    key <AD12> { [ Cyrillic_hardsign, Cyrillic_HARDSIGN, bracketright, braceright  ] }; // ] }
+    // 3rd keyboard row
+    key <AC01> { [       Cyrillic_ef,       Cyrillic_EF,                 U2248,                 U2318  ] }; // "a" // U+2248 ALMOST EQUAL TO // U+2318 PLACE OF INTEREST SIGN
+    key <AC02> { [     Cyrillic_yeru,     Cyrillic_YERU,               section,              NoSymbol  ] }; // "s"
+    key <AC03> { [       Cyrillic_ve,       Cyrillic_VE,                degree,                 U2300  ] }; // "d" // U+2300 DIAMETER SIGN
+    key <AC04> { [        Cyrillic_a,        Cyrillic_A,              sterling,              NoSymbol  ] }; // "f"
+    key <AC05> { [       Cyrillic_pe,       Cyrillic_PE,                 U20B4,              NoSymbol  ] }; // "g" // +₴ // U+20b4 UKRAINIAN HRIVNYA
+    key <AC06> { [       Cyrillic_er,       Cyrillic_ER,                 U20BD,              NoSymbol  ] }; // "h" // U+20BD RUSSIAN RUBLE
+    key <AC07> { [        Cyrillic_o,        Cyrillic_O,    doublelowquotemark,    singlelowquotemark  ] }; // "j" // +S‚
+    key <AC08> { [       Cyrillic_el,       Cyrillic_EL,   leftdoublequotemark,   leftsinglequotemark  ] }; // "k"
+    key <AC09> { [       Cyrillic_de,       Cyrillic_DE,  rightdoublequotemark,  rightsinglequotemark  ] }; // "l"
+    key <AC10> { [      Cyrillic_zhe,      Cyrillic_ZHE,   leftsinglequotemark,        dead_diaeresis  ] }; // ";"
+    key <AC11> { [        Cyrillic_e,        Cyrillic_E,  rightsinglequotemark,              NoSymbol  ] }; // "'"
+    key <LSGT> { [             slash,         backslash,              NoSymbol,              NoSymbol  ] }; // "\"
 
-    key <AC01> { [       Cyrillic_ef,       Cyrillic_EF, 0x01002248, 0x01002318  ] }; // ≈ ⌘
-    key <AC02> { [     Cyrillic_yeru,     Cyrillic_YERU, 0x010000a7              ] }; // §
-    key <AC03> { [       Cyrillic_ve,       Cyrillic_VE, 0x010000b0, 0x01002300  ] }; // ° ⌀
-    key <AC04> { [        Cyrillic_a,        Cyrillic_A, 0x010000a3              ] }; // £
-    key <AC06> { [       Cyrillic_er,       Cyrillic_ER, 0x010020bd              ] }; // ₽
-    key <AC07> { [        Cyrillic_o,        Cyrillic_O, 0x0100201e              ] }; // „
-    key <AC08> { [       Cyrillic_el,       Cyrillic_EL, 0x0100201c, 0x01002018  ] }; // “ ‘
-    key <AC09> { [       Cyrillic_de,       Cyrillic_DE, 0x0100201d, 0x01002019  ] }; // ” ’
-    key <AC10> { [      Cyrillic_zhe,      Cyrillic_ZHE, 0x01002018, dead_diaeresis ] }; // ‘ ¨
-    key <AC11> { [        Cyrillic_e,        Cyrillic_E, 0x01002019              ] }; // ’
+    // 4th keyboard row
+    key <BKSL> { [             slash,         backslash,              NoSymbol,              NoSymbol  ] };
+    key <AB01> { [       Cyrillic_ya,       Cyrillic_YA,              NoSymbol,          dead_cedilla  ] }; // "z"
+    key <AB02> { [      Cyrillic_che,      Cyrillic_CHE,              multiply,                 U22C5  ] }; // "x" // U+22C5 DOT OPERATOR (·)
+    key <AB03> { [       Cyrillic_es,       Cyrillic_ES,             copyright,                  cent  ] }; // "c"
+    key <AB04> { [       Cyrillic_em,       Cyrillic_EM,             downarrow,            dead_caron  ] }; // "v"
+    key <AB05> { [        Cyrillic_i,        Cyrillic_I,                 U03B2,                 U03B1  ] }; // "b" // +β +Sα // U+03B2 GREEK SMALL LETTER BETA // U+03B1 GREEK SMALL LETTER ALPHA
+    key <AB06> { [       Cyrillic_te,       Cyrillic_TE,              NoSymbol,            dead_tilde  ] }; // "n"
+    key <AB07> { [ Cyrillic_softsign, Cyrillic_SOFTSIGN,                 U2212,    enfilledcircbullet  ] }; // "m" // U+2212 MINUS SIGN (−)
+    key <AB08> { [       Cyrillic_be,       Cyrillic_BE,         guillemotleft,                  less  ] }; // "," // +S<
+    key <AB09> { [       Cyrillic_yu,       Cyrillic_YU,        guillemotright,               greater  ] }; // "." // +S>
+    key <AB10> { [            period,             comma,              division,            dead_acute  ] }; // "/" // +÷
 
-    key <AB01> { [       Cyrillic_ya,       Cyrillic_YA,      none, dead_cedilla ] }; //   ¸
-    key <AB02> { [      Cyrillic_che,      Cyrillic_CHE, 0x010000d7, 0x010000b7  ] }; // × ·
-    key <AB03> { [       Cyrillic_es,       Cyrillic_ES, 0x010000a9, 0x010000a2  ] }; // © ¢
-    key <AB04> { [       Cyrillic_em,       Cyrillic_EM, 0x01002193, dead_caron  ] }; // ↓ ˇ
-    key <AB05> { [        Cyrillic_i,        Cyrillic_I, 0x010000df, 0x01001e9e  ] }; // ß ẞ
-    key <AB06> { [       Cyrillic_te,       Cyrillic_TE,       none, dead_tilde  ] }; //   ~
-    key <AB07> { [ Cyrillic_softsign, Cyrillic_SOFTSIGN, 0x01002212, 0x01002022  ] }; // − •
-    key <AB08> { [       Cyrillic_be,       Cyrillic_BE, 0x010000ab, 0x0100201e  ] }; // « „
-    key <AB09> { [       Cyrillic_yu,       Cyrillic_YU, 0x010000bb, 0x0100201c  ] }; // » “
-    key <AB10> { [            period,             comma,   ellipsis, dead_acute  ] }; // … ´
+    // 5th keyboard row
+    key <SPCE> { [             space,             space,          nobreakspace,          nobreakspace  ] }; // " "
 
-    key <SPCE> { [             space,             space, nobreakspace, nobreakspace ] }; // nbsp
-
-    include "level3(ralt_switch)"
+    // Adds comma on keypad DELETE key
+    include "kpdl(comma)"
 };
