@@ -19,7 +19,7 @@
 *color14              : #6bc1d0
 *color15              : #cdcdcd
 *foreground           : #cbcbc9
-*background           : #101010
+*background           : #000002
 *cursorColor          : #8faf9f
 URxvt.font            : xft:SF Mono:style=Medium:size=20
 URxvt.scrollBar       : false

@@ -1,24 +1,29 @@
-#!/bin/bash
+command_exists() {
+  cmd=$1
+  command -v "${cmd}" >/dev/null 2>&1
+}
 
-alias mc='mc -b'
-alias ls='LC_COLLATE=C ls -F -h -w 80 --color --group-directories-first'
+command_exists mc         && alias mc='mc -b'
+command_exists ls         && alias ls='LC_COLLATE=C ls -F -h -w 80 --color --group-directories-first'
+command_exists ag         && alias grep=ag
+command_exists neomutt    && alias mutt=neomutt
+command_exists imv        && alias feh=imv
 
-EDITOR=vim
-VISUAL=vim
-
-command -v open >/dev/null 2>&1 && alias o='open'
-command -v ag >/dev/null 2>&1 && alias grep='ag'
-command -v neomutt >/dev/null 2>&1 && alias mutt='neomutt'
-if command -v nvim >/dev/null 2>&1; then
-  alias vim='nvim'
+if command_exists nvim; then
+  alias vi=nvim
+  alias vim=nvim
   alias vimdiff='nvim -d'
   EDITOR=nvim
   VISUAL=nvim
+  export EDITOR
+  export VISUAL
+elif command_exists vim; then
+  alias vi=vim
+  EDITOR=vim
+  VISUAL=vim
+  export EDITOR
+  export VISUAL
 fi
-command -v vim >/dev/null 2>&1 && alias vi='vim'
-
-export EDITOR
-export VISUAL
 
 cd() {
   builtin cd "$@" && ls

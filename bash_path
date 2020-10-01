@@ -1,3 +1,0 @@
-path() {
-  readlink -f "$1" | tee /dev/stderr | tr -d '\n' | xsel
-}

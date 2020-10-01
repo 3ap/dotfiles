@@ -1,2 +1,4 @@
-export GDK_BACKEND=wayland
-export QT_QPA_PLATFORM=wayland
+GDK_BACKEND=wayland
+QT_QPA_PLATFORM=wayland
+
+export GDK_BACKEND QT_QPA_PLATFORM

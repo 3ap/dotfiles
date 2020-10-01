@@ -1,5 +1,0 @@
-#!/bin/bash
-
-if [ -f $HOME/.Xresources ] && [ -x /usr/bin/xrdb ]; then
-  /usr/bin/xrdb $HOME/.Xresources >/dev/null 2>&1
-fi

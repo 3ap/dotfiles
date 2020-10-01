@@ -1,4 +1,5 @@
-#!/bin/bash -efu
+#!/bin/bash
+set -efu
 
 progpath="$0"
 prog="${prog:-${0##*/}}"
@@ -75,14 +76,16 @@ e.g. install_dotfiles \"bash xterm\" \"/etc/profile\" \"\$HOME/.bashrc\"\n"
 
   local ret=0
 
-  for app in $apps; do
-    command -v "$app" >/dev/null 2>&1 || ret=$?
-    if [ $ret -ne 0 ]; then
-      info '>> %s is not found on this server. Skipping %s...\n' \
-                                                    "$app" "$srcpath"
-      return
-    fi
-  done
+  if [ -n "${apps}" ]; then
+    for app in $apps; do
+      command -v "$app" >/dev/null 2>&1 || ret=$?
+      if [ $ret -ne 0 ]; then
+        info ">> %s is not installed. Skipping %s...\n" \
+                                                      "$app" "$srcpath"
+        return
+      fi
+    done
+  fi
 
   if [ -e "$srcpath" ]; then
     if [ -L $dstpath ]; then
@@ -164,13 +167,54 @@ fi
 
 info "Installing dotfiles...\n"
 
-install_dotfile "vim"                                             \
-                "$dotfilesdir/vimrc"                              \
-                "$HOME/.vimrc"
-
 install_dotfile "nvim"                                            \
                 "$dotfilesdir/vimrc"                              \
                 "$HOME/.config/nvim/init.vim"
+
+install_dotfile "waybar"                                          \
+                "$dotfilesdir/waybar-config"                      \
+                "$HOME/.config/waybar/config"
+
+install_dotfile "waybar"                                          \
+                "$dotfilesdir/waybar-style"                       \
+                "$HOME/.config/waybar/style.css"
+
+install_dotfile "i3status"                                        \
+                "$dotfilesdir/i3status-config"                    \
+                "$HOME/.config/i3status/config"
+
+# Don't create "Desktop" and "Downloads" directories
+install_dotfile ""                                                \
+                "$dotfilesdir/user-dirs.dirs"                     \
+                "$HOME/.config/user-dirs.dirs"
+
+install_dotfile "alacritty"                                       \
+                "$dotfilesdir/alacritty.yml"                      \
+                "$HOME/.config/alacritty/alacritty.yml"
+
+install_dotfile "sway"                                            \
+                "$dotfilesdir/sway-config"                        \
+                "$HOME/.config/sway/config"
+
+install_dotfile ""                                                \
+                "$dotfilesdir/xkb-birman-ru"                      \
+                "$HOME/.config/xkb/symbols/birman-ru"
+
+install_dotfile ""                                                \
+                "$dotfilesdir/xkb-birman-us"                      \
+                "$HOME/.config/xkb/symbols/birman-us"
+
+install_dotfile "htop"                                            \
+                "$dotfilesdir/htoprc"                             \
+                "$HOME/.config/htop/htoprc"
+
+install_dotfile "foot"                                            \
+                "$dotfilesdir/foot.ini"                           \
+                "$HOME/.config/foot/foot.ini"
+
+install_dotfile "dunst"                                           \
+                "$dotfilesdir/dunstrc"                            \
+                "$HOME/.config/dunstrc"
 
 install_dotfile "bash"                                            \
                 "$dotfilesdir/bashrc"                             \
@@ -186,11 +230,11 @@ install_dotfile "bash"                                            \
 
 install_dotfile "bash"                                            \
                 "$dotfilesdir/bash_env"                           \
-                "$HOME/.bashrc.d/02-bash_env"
+                "$HOME/.bash_profile.d/02-bash_env"
 
 install_dotfile "bash"                                            \
-                "$dotfilesdir/bash_ps1"                           \
-                "$HOME/.bashrc.d/02-bash_ps1"
+                "$dotfilesdir/bash_term"                          \
+                "$HOME/.bashrc.d/02-bash_term"
 
 install_dotfile "bash"                                            \
                 "$dotfilesdir/bash_aliases"                       \
@@ -204,65 +248,29 @@ install_dotfile "bash"                                            \
                 "/usr/share/bash-completion/bash_completion"      \
                 "$HOME/.bashrc.d/01-bash_completion"
 
-install_dotfile "bash"                                            \
-                "/etc/profile"                                    \
-                "$HOME/.bashrc.d/01-profile"
-
-install_dotfile "bash"                                            \
-                "$dotfilesdir/bash_beeper"                        \
-                "$HOME/.bashrc.d/02-bash_beeper"
-
 install_dotfile "bash sway"                                       \
                 "$dotfilesdir/bash_wayland"                       \
-                "$HOME/.bashrc.d/99-wayland"
+                "$HOME/.bash_profile.d/99-wayland"
 
 install_dotfile "sway mako"                                       \
                 "$dotfilesdir/sway-mako"                          \
                 "$HOME/.swayrc.d/03-mako"
 
-install_dotfile "sway setxkbmap"                                  \
-                "$dotfilesdir/xinitrc-xkbmap"                     \
-                "$HOME/.swayrc.d/00-xkbmap"
-
 install_dotfile "sway mako notify-send inotifywait neomutt"       \
                 "$dotfilesdir/xinitrc-mailnotify"                 \
                 "$HOME/.swayrc.d/00-mailnotify"
-
-install_dotfile "waybar"                                          \
-                "$dotfilesdir/waybar-config"                      \
-                "$HOME/.config/waybar/config"
-
-install_dotfile "waybar"                                          \
-                "$dotfilesdir/waybar-style"                       \
-                "$HOME/.config/waybar/style.css"
-
-install_dotfile "i3status"                                        \
-                "$dotfilesdir/i3status-config"                    \
-                "$HOME/.config/i3status/config"
 
 install_dotfile "bash"                                            \
                 "/usr/share/doc/pkgfile/command-not-found.bash"   \
                 "$HOME/.bashrc.d/02-command-not-found"
 
-install_dotfile "bash xrdb"                                       \
-                "$dotfilesdir/bash_xrdb"                          \
-                "$HOME/.bashrc.d/02-bash_xrdb"
-
-install_dotfile "bash fc-cache"                                   \
-                "$dotfilesdir/bash_fc"                            \
-                "$HOME/.bashrc.d/02-bash_fc"
-
 install_dotfile "bash dircolors"                                  \
                 "$dotfilesdir/bash_dircolors"                     \
-                "$HOME/.bashrc.d/02-bash_dircolors"
+                "$HOME/.bash_profile.d/02-bash_dircolors"
 
 install_dotfile "bash"                                            \
                 "$dotfilesdir/bash_open"                          \
                 "$HOME/.bashrc.d/04-bash_open"
-
-install_dotfile "bash"                                            \
-                "$dotfilesdir/bash_path"                          \
-                "$HOME/.bashrc.d/04-bash_path"
 
 install_dotfile "bash"                                            \
                 "$dotfilesdir/inputrc"                            \
@@ -272,12 +280,12 @@ install_dotfile "tmux"                                            \
                 "$dotfilesdir/tmux.conf"                          \
                 "$HOME/.tmux.conf"
 
-install_dotfile "xrdb"                                            \
-                "$dotfilesdir/Xresources"                         \
-                "$HOME/.Xresources"
+install_dotfile "Xorg"                                            \
+                "$dotfilesdir/Xdefaults"                          \
+                "$HOME/.Xdefaults"
 
-install_dotfile "xrdb"                                            \
-                "$dotfilesdir/Xresources"                         \
+install_dotfile "Xwayland"                                        \
+                "$dotfilesdir/Xdefaults"                          \
                 "$HOME/.Xdefaults"
 
 install_dotfile "git"                                             \
@@ -292,18 +300,21 @@ install_dotfile "fc-cache"                                        \
                 "$dotfilesdir/fonts.conf"                         \
                 "$HOME/.fonts.conf"
 
-# Don't create "Desktop" and "Downloads" directories
-install_dotfile "firefox"                                         \
-                "$dotfilesdir/user-dirs.dirs"                     \
-                "$HOME/.config/user-dirs.dirs"
+install_dotfile "vim"                                             \
+                "$dotfilesdir/vimrc"                              \
+                "$HOME/.vimrc"
+
+install_dotfile "i3"                                              \
+                "$dotfilesdir/i3-config"                          \
+                "$HOME/.i3/config"
+
+install_dotfile "i3"                                              \
+                "$dotfilesdir/xinitrc-i3"                         \
+                "$HOME/.xinitrc"
 
 install_dotfile "setxkbmap"                                       \
                 "$dotfilesdir/xinitrc-xkbmap"                     \
                 "$HOME/.xinitrc.d/00-xkbmap"
-
-install_dotfile "dunst"                                           \
-                "$dotfilesdir/dunstrc"                            \
-                "$HOME/.config/dunstrc"
 
 install_dotfile "dunst"                                           \
                 "$dotfilesdir/xinitrc-dunst"                      \
@@ -329,32 +340,4 @@ install_dotfile "swaylock"                                        \
                 "$dotfilesdir/sway-lock"                          \
                 "$HOME/.local/bin/lock"
 
-install_dotfile "alacritty"                                       \
-                "$dotfilesdir/alacritty.yml"                      \
-                "$HOME/.config/alacritty/alacritty.yml"
-
-install_dotfile "i3"                                              \
-                "$dotfilesdir/xinitrc-i3"                         \
-                "$HOME/.xinitrc"
-
-install_dotfile "i3"                                              \
-                "$dotfilesdir/i3-config"                          \
-                "$HOME/.i3/config"
-
-install_dotfile "sway"                                            \
-                "$dotfilesdir/sway-config"                        \
-                "$HOME/.config/sway/config"
-
-install_dotfile "setxkbmap"                                       \
-                "$dotfilesdir/xkb-birman-ru"                      \
-                "$HOME/.config/xkb/symbols/birman-ru"
-
-install_dotfile "setxkbmap"                                       \
-                "$dotfilesdir/xkb-birman-us"                      \
-                "$HOME/.config/xkb/symbols/birman-us"
-
-install_dotfile "htop"                                            \
-                "$dotfilesdir/htoprc"                             \
-                "$HOME/.config/htop/htoprc"
-
-info "Installing successfully done.\n"
+info "Installation completed successfully\n"

@@ -1,6 +1,4 @@
-#!/bin/bash
-
-open() {
+open_func() {
   file="$1"
 
   IFS='/' read -r major minor < <(file -ib "$file" 2>/dev/null | cut -d ';' -f 1)
@@ -20,3 +18,5 @@ open() {
       /usr/bin/xdg-open "$file";;
   esac
 }
+
+command -v open >/dev/null 2>&1 && alias o=open || alias o=open_func

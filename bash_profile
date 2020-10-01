@@ -1,3 +1,7 @@
-#!/bin/bash
+for script in ${HOME}/.bash_profile.d/*; do
+  if [ -r "${script}" ]; then
+    . "${script}"
+  fi
+done
 
-[ -f ~/.bashrc ] && . ~/.bashrc
+[ -f "${HOME}/.bashrc" ] && . "${HOME}/.bashrc"

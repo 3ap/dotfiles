@@ -1,32 +1,33 @@
 set $mod Mod4
-set $menu dmenu_path | bemenu | xargs swaymsg exec --
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
 floating_modifier $mod
-
-bindsym Ctrl+grave [instance="dropdown"] scratchpad show
 
 set $workspace_www 1:www
 set $workspace_mail 2:mail
 set $workspace_editor 3:editor
 set $workspace_terminals 4:terminals
 
-assign [window_role="^browser$"] \u2192 workspace $workspace_www
-assign [class="Thunderbird"]     \u2192 workspace $workspace_mail
-assign [title="^Neovim$"]        \u2192 workspace $workspace_editor
-for_window [window_role="browser"] layout tabbed
+assign [app_id="thunderbird"] workspace $workspace_mail
+assign [app_id="telegramdesktop"] workspace $workspace_mail
+assign [app_id="firefox"] workspace $workspace_www
 
 exec ~/.swayrc.d/00-mailnotify
 exec ~/.swayrc.d/00-xkbmap
 exec ~/.swayrc.d/03-mako
+#exec ~/.swayrc.d/04-foot
+exec ~/.swayrc.d/05-redshift
+#exec ~/.swayrc.d/06-oguri
 
 # Main hotkeys
-bindsym --to-code $mod+Return          exec wterm
+bindsym --to-code $mod+Return          exec foot
 bindsym --to-code $mod+r               exec $menu
 bindsym --to-code $mod+c               kill
 bindsym --to-code Mod1+Shift+r         reload
 bindsym --to-code $mod+Shift+q         exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 bindsym --to-code $mod+l               exec lock
 bindsym --release Print exec "grim /home/zar/screenshot.png"
-bindsym --release Shift+Print exec "scrot -s '/home/zar/%s_%H%M_%d%m%Y_$wx$h.png'"
+bindsym --release Shift+Print exec 'grim -g "$(slurp)" - | wl-copy'
+bindsym --release Ctrl+Print exec 'grim -g "$(slurp)" - | swappy -f -'
 bindsym XF86AudioRaiseVolume exec "amixer sset Master '5%+'"
 bindsym XF86AudioLowerVolume exec "amixer sset Master '5%-'"
 bindsym XF86AudioMute exec "amixer set Headphone toggle; amixer set Speaker toggle; amixer set Master on"
@@ -114,5 +115,10 @@ client.background       #ffffff
 default_border none
 font pango:Monaco 7
 
-output * bg /home/zar/.dotfiles/wallpapers/black.jpg fill
+input * {
+    xkb_layout "birman-us,birman-ru"
+    xkb_options "grp:caps_toggle,grp_led:scroll,lv3:ralt_switch_multikey"
+}
+
+output * bg /home/zar/.dotfiles/wallpapers/girl.png fill
 #xwayland disable
