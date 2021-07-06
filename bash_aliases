@@ -8,6 +8,7 @@ command_exists ls         && alias ls='LC_COLLATE=C ls -F -h -w 80 --color --gro
 command_exists ag         && alias grep=ag
 command_exists neomutt    && alias mutt=neomutt
 command_exists imv        && alias feh=imv
+command_exists git        && alias fixup='git commit -a --fixup HEAD && GIT_SEQUENCE_EDITOR=: git rebase -i HEAD~2'
 
 if command_exists nvim; then
   alias vi=nvim
