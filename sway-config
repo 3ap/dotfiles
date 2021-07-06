@@ -1,5 +1,5 @@
 set $mod Mod4
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu dmenu_path | bemenu | xargs swaymsg exec --
 floating_modifier $mod
 
 set $workspace_www 1:www
