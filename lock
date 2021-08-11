@@ -49,16 +49,18 @@ fi
 
 if [ "${i3lock_color}" = 'yes' ]; then
   i3lock ${opts} \
-    --timepos="x+110:h-70" \
-    --datepos="x+130:h-45" \
-    --clock --datestr "Type password to unlock..." \
-    --insidecolor=$background --ringcolor=$foreground --line-uses-inside \
-    --keyhlcolor=$letterEnteredColor --bshlcolor=$letterRemovedColor --separatorcolor=$background \
-    --insidevercolor=$passwordCorrect --insidewrongcolor=$passwordIncorrect \
-    --ringvercolor=$foreground --ringwrongcolor=$foreground --indpos="x+280:h-70" \
-    --radius=20 --ring-width=4 --veriftext="" --wrongtext="" \
-    --verifcolor="$foreground" --timecolor="$foreground" --datecolor="$foreground" \
-    --noinputtext="" --time-font="SF Mono:style=Medium:size=20" \
+    --time-pos="x+110:h-70" \
+    --date-pos="x+130:h-45" \
+    --clock --date-str "Type password to unlock..." \
+    --inside-color=$background --ring-color=$foreground --line-uses-inside \
+    --keyhl-color=$letterEnteredColor \
+    --bshl-color=$letterRemovedColor --separator-color=$background \
+    --insidever-color=$passwordCorrect --insidewrong-color=$passwordIncorrect \
+    --ringver-color=$foreground --ringwrong-color=$foreground \
+    --ind-pos="x+280:h-70" \
+    --radius=20 --ring-width=4 --verif-text="" --wrong-text="" \
+    --verif-color="$foreground" --time-color="$foreground" --date-color="$foreground" \
+    --noinput-text="" --time-font="SF Mono:style=Medium:size=20" \
     --force-clock
 else
   i3lock ${opts} -u
