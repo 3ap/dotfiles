@@ -216,6 +216,10 @@ install_dotfile "dunst"                                           \
                 "$dotfilesdir/dunstrc"                            \
                 "$HOME/.config/dunstrc"
 
+install_dotfile "mako"                                            \
+                "$dotfilesdir/mako-config"                        \
+                "$HOME/.config/mako/config"
+
 install_dotfile "bash"                                            \
                 "$dotfilesdir/bashrc"                             \
                 "$HOME/.bashrc"
