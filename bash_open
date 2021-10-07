@@ -5,17 +5,17 @@ open_func() {
 
   case "$major/$minor" in
     text/html)
-      firefox "$file" &;;
+      firefox "$@" & disown;;
     application/pdf)
-      zathura "$file" &;;
+      zathura "$@" & disown;;
     image/*)
-      feh "$file" &;;
+      feh "$@" & disown;;
     text/*)
-      xterm -e vim "$file" &;;
+      xterm -e vim "$@" & disown;;
     video/*)
-      mpv "$file" &;;
+      mpv "$@" & disown;;
     *)
-      /usr/bin/xdg-open "$file";;
+      /usr/bin/xdg-open "$@";;
   esac
 }
 
