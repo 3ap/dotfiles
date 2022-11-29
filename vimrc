@@ -99,9 +99,6 @@ if has("autocmd")
   autocmd! bufwritepost .vimrc source $MYVIMRC
   autocmd! bufwritepost init.vim source $MYVIMRC
 
-  " autostrip trailing whitespaces
-  autocmd! FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yaml,yml,perl,sql,vim,markdown autocmd BufWritePre <buffer> call StripTrailingWhitespace()
-
   " autodetect file type for syntax highlighting
   autocmd! BufEnter,InsertLeave * :filetype detect
 
@@ -117,32 +114,32 @@ if has('persistent_undo')
 endif
 
 if has("nvim-0.5.0")
-    packadd nvim-lsp
-"    lua require'nvim_lsp'.rust_analyzer.setup{}
-    lua require'nvim_lsp'.rls.setup{}
-"    lua require'nvim_lsp'.clangd.setup{}
-
-    let g:language_client_log_level = 'debug'
-
-    function! LSPRename()
-        let s:newName = input('Enter new name: ', expand('<cword>'))
-        echom "s:newName = " . s:newName
-        lua vim.lsp.buf.rename(s:newName)
-    endfunction
-
-    function! LSPSetMappings()
-        setlocal omnifunc=v:lua.vim.lsp.omnifunc
-
-        nnoremap <silent> <buffer> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-        nnoremap <silent> <buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-        nnoremap <silent> <buffer> K     <cmd>lua vim.lsp.buf.hover()<CR>
-        nnoremap <silent> <buffer> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-        nnoremap <silent> <buffer> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-        nnoremap <silent> <buffer> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-        nnoremap <silent> <buffer> gr    <cmd>lua vim.lsp.buf.references()<CR>
-        nnoremap <silent> <buffer> gR    <cmd>lua vim.lsp.buf.rename()<CR>
-    endfunction
-
-    au FileType lua,sh,c,python,rust :call LSPSetMappings()
-    "autocmd BufWritePre lua,sh,c,python,rust lua vim.lsp.buf.formatting_sync(nil, 1000)
+"    packadd nvim-lsp
+""    lua require'nvim_lsp'.rust_analyzer.setup{}
+"    lua require'nvim_lsp'.rls.setup{}
+""    lua require'nvim_lsp'.clangd.setup{}
+"
+"    let g:language_client_log_level = 'debug'
+"
+"    function! LSPRename()
+"        let s:newName = input('Enter new name: ', expand('<cword>'))
+"        echom "s:newName = " . s:newName
+"        lua vim.lsp.buf.rename(s:newName)
+"    endfunction
+"
+"    function! LSPSetMappings()
+"        setlocal omnifunc=v:lua.vim.lsp.omnifunc
+"
+"        nnoremap <silent> <buffer> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+"        nnoremap <silent> <buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+"        nnoremap <silent> <buffer> K     <cmd>lua vim.lsp.buf.hover()<CR>
+"        nnoremap <silent> <buffer> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+"        nnoremap <silent> <buffer> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+"        nnoremap <silent> <buffer> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+"        nnoremap <silent> <buffer> gr    <cmd>lua vim.lsp.buf.references()<CR>
+"        nnoremap <silent> <buffer> gR    <cmd>lua vim.lsp.buf.rename()<CR>
+"    endfunction
+"
+"    au FileType lua,sh,c,python,rust :call LSPSetMappings()
+"    "autocmd BufWritePre lua,sh,c,python,rust lua vim.lsp.buf.formatting_sync(nil, 1000)
 endif
