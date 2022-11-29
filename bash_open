@@ -3,7 +3,7 @@ open_func() {
 
   IFS='/' read -r major minor < <(file -ib "$file" 2>/dev/null | cut -d ';' -f 1)
 
-  case "$major/$minor" in
+  (case "$major/$minor" in
     text/html)
       firefox "$@" & disown;;
     application/pdf)
@@ -16,7 +16,7 @@ open_func() {
       mpv "$@" & disown;;
     *)
       /usr/bin/xdg-open "$@";;
-  esac
+  esac)
 }
 
 command -v open >/dev/null 2>&1 && alias o=open || alias o=open_func
